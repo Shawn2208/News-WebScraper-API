@@ -1,10 +1,9 @@
-require('dotenv').config()
 const express = require('express');
 const { handleErrors } = require('./utils/errorHandler');
 const { getCornwallLiveArticles, getCornishTimesArticles } = require('./utils/articleExtractor');
 
 const app = express();
-const port = 8000;
+const port = 3000;
 
 // Root endpoint
 app.get('/', (req, res) => {
