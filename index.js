@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express');
 const { handleErrors } = require('./utils/errorHandler');
 const { getCornwallLiveArticles, getCornishTimesArticles } = require('./utils/articleExtractor');
