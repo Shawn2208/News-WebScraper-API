@@ -23,3 +23,16 @@ To expand this project, consider the following enhancements:
 9. **Database Integration**: Consider using a database to store articles and related data for more efficient retrieval and management. A database would provide structured storage and better data management capabilities.
 
 10. **Analytics**: Add analytics to track API usage patterns and understand user behavior. This data can be invaluable for making informed decisions about future API enhancements and marketing strategies.
+
+11. ### Clone the repository
+To get started with the project, clone the repository:
+
+git clone https://github.com/Shawn2208/News-WebScraper-API.git
+
+12. cd News-WebScraper-API
+    npm install
+
+13. ## Usage:
+14. npm start
+
+
