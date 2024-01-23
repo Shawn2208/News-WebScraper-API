@@ -35,4 +35,52 @@ git clone https://github.com/Shawn2208/News-WebScraper-API.git
 13. ## Usage:
 14. npm start
 
+# News API Endpoints
+
+This API provides endpoints to fetch news articles from cornwalllive and cornishtimes. Below are the available endpoints and their descriptions:
+
+# Root Endpoint
+
+GET / - https://new-api-qmrp.onrender.com/
+
+Returns a welcome message indicating that the request reached the News API.
+
+Response:
+
+"This is a news API"
+
+# Fetch All News Articles
+
+GET /news - https://new-api-qmrp.onrender.com/news
+
+Fetches and combines news articles from both cornwalllive and cornishtimes.
+
+# Fetch News Articles by Newspaper
+
+GET /news/:newspaperName - https://new-api-qmrp.onrender.com/news/:newspaperName
+
+Fetches news articles from a specific newspaper. Replace :newspaperName with either cornwalllive or cornishtimes.
+
+Parameters:
+
+newspaperName (path parameter) - Name of the newspaper (cornwalllive or cornishtimes).
+
+Response:
+
+JSON object containing the newspaper name and an array of articles from the specified newspaper.
+
+# Fetch a Specific Article from a Newspaper
+
+GET /news/:newspaperName/:articleIndex - https://new-api-qmrp.onrender.com/news/:newspaperName/:articleIndex
+
+Fetches a specific article from the specified newspaper. Replace :newspaperName with the newspaper's name and :articleIndex with the index of the article.
+
+Parameters:
+
+newspaperName (path parameter) - Name of the newspaper (cornwalllive or cornishtimes).
+articleIndex (path parameter) - Index of the article in the articles array.
+
+Response:
+
+JSON object containing the newspaper name and the specified article.
 
