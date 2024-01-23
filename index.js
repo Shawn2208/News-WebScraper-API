@@ -2,10 +2,13 @@ const express = require('express');
 const { handleErrors } = require('./utils/errorHandler');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
+const cors = require('cors');
 const { getCornwallLiveArticles, getCornishTimesArticles } = require('./utils/articleExtractor');
 
 const app = express();
 const port = 3000;
+
+app.use(cors())
 
 // Root endpoint
 app.get('/', (req, res) => {
