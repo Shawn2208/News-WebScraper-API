@@ -1,5 +1,7 @@
 const express = require('express');
 const { handleErrors } = require('./utils/errorHandler');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 const { getCornwallLiveArticles, getCornishTimesArticles } = require('./utils/articleExtractor');
 
 const app = express();
@@ -10,6 +12,10 @@ app.get('/', (req, res) => {
     res.json('This is a news API');
 });
 
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Define the newspapers array
 const newspapers = [

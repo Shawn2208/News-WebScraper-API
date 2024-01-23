@@ -1,0 +1,96 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: News API
+  description: API to fetch news articles from CornwallLive and CornishTimes
+host: 'localhost:3000'
+basePath: '/'
+schemes:
+  - http
+paths:
+  /:
+    get:
+      summary: Root Endpoint
+      description: Returns API status message
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: string
+            example: 'This is a news API'
+  /news:
+    get:
+      summary: Get news articles from CornwallLive and CornishTimes
+      description: Fetches a combined list of articles from CornwallLive and CornishTimes
+      responses:
+        200:
+          description: An array of articles
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Article'
+        500:
+          description: Internal server error
+  /news/{newspaperName}:
+    get:
+      summary: Get news articles for a specific newspaper
+      description: Fetches articles from a specific newspaper provided in the path parameter
+      parameters:
+        - in: path
+          name: newspaperName
+          type: string
+          required: true
+          description: The name of the newspaper
+      responses:
+        200:
+          description: An object containing the newspaper name and an array of articles
+          schema:
+            type: object
+            properties:
+              newspaper:
+                type: string
+              articles:
+                type: array
+                items:
+                  $ref: '#/definitions/Article'
+        404:
+          description: Newspaper not found
+        500:
+          description: Internal server error
+  /news/{newspaperName}/{articleIndex}:
+    get:
+      summary: Get a specific article for a newspaper
+      description: Fetches a specific article by index from a specified newspaper
+      parameters:
+        - in: path
+          name: newspaperName
+          type: string
+          required: true
+          description: The name of the newspaper
+        - in: path
+          name: articleIndex
+          type: integer
+          required: true
+          description: The index of the article in the newspaper's article list
+      responses:
+        200:
+          description: An object containing the newspaper name and the article
+          schema:
+            type: object
+            properties:
+              newspaper:
+                type: string
+              article:
+                $ref: '#/definitions/Article'
+        404:
+          description: Newspaper or article not found
+        500:
+          description: Internal server error
+definitions:
+  Article:
+    type: object
+    properties:
+      title:
+        type: string
+      url:
+        type: string
