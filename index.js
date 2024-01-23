@@ -1,28 +1,15 @@
 const express = require('express');
 const { handleErrors } = require('./utils/errorHandler');
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const cors = require('cors');
 const { getCornwallLiveArticles, getCornishTimesArticles } = require('./utils/articleExtractor');
 
 const app = express();
 const port = 3000;
-
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
-}));
-
 
 // Root endpoint
 app.get('/', (req, res) => {
     res.json('This is a news API');
 });
 
-const swaggerDocument = YAML.load('./swagger.yaml');
-
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Define the newspapers array
 const newspapers = [
