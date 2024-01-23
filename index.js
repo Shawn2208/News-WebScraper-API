@@ -8,7 +8,11 @@ const { getCornwallLiveArticles, getCornishTimesArticles } = require('./utils/ar
 const app = express();
 const port = 3000;
 
-app.use(cors())
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
+}));
+
 
 // Root endpoint
 app.get('/', (req, res) => {
